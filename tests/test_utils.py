@@ -34,4 +34,9 @@ def test_get_chapter_file_chapter_name_at_end():
 
 def test_extract():
     res = extract('./test_data/*.jpg')
-    assert res.index('Test 1'), 'failed'
+    assert res.index('Chapter 1: Lorem') == 0, 'failed'
+    assert res.index('Chapter 2: lpsum') == 9, 'failed'
+    assert res.index('Chapter 3: lpsum') == 14, 'failed'
+    assert res.index(
+        'Fusce sed diam erat. Suspendisse bibendum, nisl hendrerit malesuada tempor, leo purus'
+    ) == 11, 'failed'
