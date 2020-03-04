@@ -3,8 +3,8 @@ import glob
 import re
 
 
-def extract():
-    pages = glob.glob('./data/*.jpg')
+def extract(path='./data/*.jpg'):
+    pages = glob.glob(path)
     pages.sort()
 
     text = ''
@@ -77,7 +77,6 @@ def convert_chapter_to_spinal(chapter):
     name = re.sub(r"^(Chapter [0-9]+: )", '', chapter)
     if name == chapter:
         raise InvalidChapterException
-
     name = name.lower()
     return name.replace(' ', '-')
 

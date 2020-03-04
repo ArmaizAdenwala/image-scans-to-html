@@ -30,3 +30,8 @@ def test_get_chapter_file_chapter_name_at_end():
     with pytest.raises(InvalidChapterException):
         chapter = 'Lorem Ipsum Chapter 12:'
         get_chapter_file(chapter)
+
+
+def test_extract():
+    res = extract('./test_data/*.jpg')
+    assert res.index('Test 1'), 'failed'

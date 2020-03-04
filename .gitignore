@@ -1,2 +1,4 @@
 html/*.html
-__pycache__
+__pycache__/
+.cache/
+tests/.cache/
