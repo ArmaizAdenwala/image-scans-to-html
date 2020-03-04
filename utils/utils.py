@@ -31,6 +31,10 @@ def build_chapters(lines):
             cur_string = ''
         else:
             cur_string += line + '\n'
+
+    if cur_chapter:
+        chapters[cur_chapter] = cur_string
+
     return chapters
 
 

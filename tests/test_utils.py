@@ -40,3 +40,12 @@ def test_extract():
     assert res.index(
         'Fusce sed diam erat. Suspendisse bibendum, nisl hendrerit malesuada tempor, leo purus'
     ) == 11, 'failed'
+
+
+def test_build_chapters():
+    lines = [
+        'Chapter 1: lorem', 'lorem', 'Chapter 2: ipsum', 'dolor', 'sit', 'amet'
+    ]
+    chapters = build_chapters(lines)
+    assert chapters['Chapter 1: lorem'] == 'lorem\n', 'failed'
+    assert chapters['Chapter 2: ipsum'] == 'dolor\nsit\namet\n', 'failed'
