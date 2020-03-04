@@ -1,4 +1,4 @@
-from utils import extract, build_chapters, build_html_files
+from utils.utils import extract, build_chapters, build_html_files
 
 lines = extract()
 

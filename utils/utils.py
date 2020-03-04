@@ -1,7 +1,6 @@
 import pytesseract
 import glob
 import re
-import stringcase
 
 
 def extract():
@@ -76,4 +75,5 @@ def build_html_files(chapters):
 
 def convert_chapter_to_spinal(chapter):
     name = re.sub(r"^(Chapter [0-9]+: )", '', chapter)
-    return stringcase.spinalcase(name)
+    name = name.lower()
+    return name.replace(' ', '-')
