@@ -43,11 +43,11 @@ def get_chapter_file(chapter):
     return '{}.html'.format(chapter_spinal_case)
 
 
-def build_html_files(chapters):
+def build_html_files(chapters, dest='./html/'):
     chapter_keys = list(chapters.keys())
     for index, chapter in enumerate(chapter_keys):
         chapter_file = get_chapter_file(chapter)
-        file_name = './html/{}'.format(chapter_file)
+        file_name = '{0}{1}'.format(dest, chapter_file)
         html_file = open(file_name, 'w')
 
         prev_link = ''

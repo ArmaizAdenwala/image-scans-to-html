@@ -1,4 +1,6 @@
 import pytest
+import glob
+
 from utils.utils import extract, build_chapters, build_html_files, get_chapter_file, InvalidChapterException
 
 
@@ -47,5 +49,15 @@ def test_build_chapters():
         'Chapter 1: lorem', 'lorem', 'Chapter 2: ipsum', 'dolor', 'sit', 'amet'
     ]
     chapters = build_chapters(lines)
-    assert chapters['Chapter 1: lorem'] == 'lorem\n', 'failed'
+    assert chapters['Chapter 1: lorem'] == 'lorem\n', 'failedkjjik'
     assert chapters['Chapter 2: ipsum'] == 'dolor\nsit\namet\n', 'failed'
+
+
+def test_build_html_files():
+    chapters = {
+        'Chapter 1: Lorem': 'lorem\n',
+        'Chapter 2: Ipsum': 'lorem\nipsum\ndolor\n'
+    }
+    build_html_files(chapters, './test_html/')
+    files = glob.glob('./test_html/*.html')
+    assert len(files) == 2

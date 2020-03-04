@@ -3,6 +3,6 @@ init:
 clean:
 	rm ./html/*.html
 test:
-	coverage run --source=. -m py.test tests
+	rm ./test_html/*.html; coverage run --source=. -m py.test tests
 coverage:
 	coverage report
