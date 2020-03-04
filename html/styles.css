@@ -1,0 +1,29 @@
+body {
+    position: relative;
+    background-color: #e7ebef;
+    font-family: "arial";
+  }
+  div {
+    background-color: #fafafa;
+    border-radius: 8px;
+    margin: 16px 32px;
+    padding: 32px;
+    max-width: 980px;
+    margin: 0 auto;
+    margin-top: 32px;
+  }
+  h1,
+  p {
+    margin: 0;
+    margin-bottom: 16px;
+  }
+  h1 {
+    font-size: 32px;
+  }
+  h3 {
+    font-size: 15px;
+  }
+  p {
+    font-size: 15px;
+    line-height: 1.7;
+  }
