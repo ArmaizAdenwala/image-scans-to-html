@@ -10,7 +10,7 @@ def extract():
 
     text = ''
 
-    for page in pages[:5]:
+    for page in pages:
         print('extracting: {}'.format(page))
         text += pytesseract.image_to_string(page)
 
