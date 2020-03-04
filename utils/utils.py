@@ -75,5 +75,13 @@ def build_html_files(chapters):
 
 def convert_chapter_to_spinal(chapter):
     name = re.sub(r"^(Chapter [0-9]+: )", '', chapter)
+    if name == chapter:
+        raise InvalidChapterException
+
     name = name.lower()
     return name.replace(' ', '-')
+
+
+class InvalidChapterException(Exception):
+    """Chapter name is invalid"""
+    pass
