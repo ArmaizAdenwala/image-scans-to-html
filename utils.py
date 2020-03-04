@@ -10,7 +10,7 @@ def extract():
 
     text = ''
 
-    for page in pages:
+    for page in pages[:5]:
         print('extracting: {}'.format(page))
         text += pytesseract.image_to_string(page)
 
@@ -31,7 +31,7 @@ def build_chapters(lines):
             cur_chapter = line
             cur_string = ''
         else:
-            cur_string += line
+            cur_string += line + '\n'
     return chapters
 
 
@@ -60,7 +60,7 @@ def build_html_files(chapters):
             next_chapter_file = get_chapter_file(next_chapter)
             next_link = '<p><a href="{}">Next</a></p>'.format(
                 next_chapter_file)
-
+        paragraph = chapters[chapter].replace('\n\n', '<br/><br/>')
         content = """<html>
 <head>
 <link rel="stylesheet" href="styles.css">
@@ -69,7 +69,7 @@ def build_html_files(chapters):
 <div>
 <h1>{0}</h1>
 <p>{1}</p>{2}{3}</div></body>
-</html>""".format(chapter, chapters[chapter], prev_link, next_link)
+</html>""".format(chapter, paragraph, prev_link, next_link)
         html_file.write(content)
         html_file.close()
 
