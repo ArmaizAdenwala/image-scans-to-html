@@ -20,20 +20,13 @@ def extract(path='./data/*.jpg'):
 def build_chapters(lines):
     chapters = {}
     cur_chapter = None
-    cur_string = ''
     for line in lines:
         is_chapter = re.match(r"^(Chapter [0-9]+:)", line)
 
         if is_chapter:
-            if cur_chapter is not None:
-                chapters[cur_chapter] = cur_string
             cur_chapter = line
-            cur_string = ''
         else:
-            cur_string += line + '\n'
-
-    if cur_chapter:
-        chapters[cur_chapter] = cur_string
+            chapters[cur_chapter] += line + '\n'
 
     return chapters
 
