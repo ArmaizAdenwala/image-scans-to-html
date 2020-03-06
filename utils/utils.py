@@ -19,7 +19,7 @@ def extract(path='./data/*.jpg'):
 
 def build_chapters(lines):
     chapters = {}
-    cur_chapter = None
+    cur_chapter = 'Intro'
     for line in lines:
         is_chapter = re.match(r"^(Chapter [0-9]+:)", line)
 
