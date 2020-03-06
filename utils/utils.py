@@ -25,8 +25,12 @@ def build_chapters(lines):
 
         if is_chapter:
             cur_chapter = line
+        elif cur_chapter in chapters.keys():
+            content = '{}\n'.format(line)
+            chapters[cur_chapter] += content
         else:
-            chapters[cur_chapter] += line + '\n'
+            content = '{}\n'.format(line)
+            chapters[cur_chapter] = content
 
     return chapters
 
