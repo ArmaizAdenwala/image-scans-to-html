@@ -3,7 +3,7 @@ import glob
 import re
 
 
-def extract(path='./data/*.jpg'):
+def extract(path='data/*.jpg'):
     pages = glob.glob(path)
     pages.sort()
 
@@ -34,14 +34,26 @@ def build_chapters(lines):
 
     return chapters
 
+def convert_chapter_to_spinal(chapter):
+    name = re.sub(r"^(Chapter [0-9]+: )", '', chapter)
+    if name == chapter:
+        raise InvalidChapterException
+    name = name.lower().replace(' ', '-')
+    return name
+
+
+class InvalidChapterException(Exception):
+    """Chapter name is invalid"""
+    pass
+
 
 def get_chapter_file(chapter):
     chapter_spinal_case = convert_chapter_to_spinal(chapter)
     return '{}.html'.format(chapter_spinal_case)
 
 
-def build_html_files(chapters, dest='./html/'):
-    chapter_keys = list(chapters.keys())
+def build_html_files(chapters, dest='html/'):
+    chapter_keys = list(chapters)
     for index, chapter in enumerate(chapter_keys):
         chapter_file = get_chapter_file(chapter)
         file_name = '{0}{1}'.format(dest, chapter_file)
@@ -55,7 +67,7 @@ def build_html_files(chapters, dest='./html/'):
             prev_link = '<p><a href="{}">Previous</a></p>'.format(
                 prev_chapter_file)
 
-        if (index < len(chapters.keys()) - 1):
+        if (index < len(chapters) - 1):
             next_chapter = chapter_keys[index + 1]
             next_chapter_file = get_chapter_file(next_chapter)
             next_link = '<p><a href="{}">Next</a></p>'.format(
@@ -72,16 +84,3 @@ def build_html_files(chapters, dest='./html/'):
 </html>""".format(chapter, paragraph, prev_link, next_link)
         html_file.write(content)
         html_file.close()
-
-
-def convert_chapter_to_spinal(chapter):
-    name = re.sub(r"^(Chapter [0-9]+: )", '', chapter)
-    if name == chapter:
-        raise InvalidChapterException
-    name = name.lower()
-    return name.replace(' ', '-')
-
-
-class InvalidChapterException(Exception):
-    """Chapter name is invalid"""
-    pass
