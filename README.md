@@ -1,6 +1,6 @@
 # image-scans-to-html
 
-![Pytesseract Guide](https://armaizadenwala.com/static/pytesseract-convert-image-to-html-site-df96dd5870800c6d407af1de1c65c71e.png)
+![Pytesseract Guide](https://armaizadenwala.com/static/pytesseract-convert-image-to-html-site-2eb71aa3a94dd3c94672d691c8d5e7eb.png)
 
 [View the detailed guide here](https://armaizadenwala.com/blog/pytesseract-images-to-html/)
 
