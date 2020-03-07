@@ -9,3 +9,9 @@
 [Dataset](https://github.com/ArmaizAdenwala/image-scans-to-html/tree/master/data)
 
 [styles.css](https://github.com/ArmaizAdenwala/image-scans-to-html/tree/master/html)
+
+## Author
+
+Armaiz Adenwala
+
+[Software Engineer Portfolio](https://armaizadenwala.com/)
